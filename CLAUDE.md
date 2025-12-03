@@ -48,15 +48,21 @@ Invoke via `guardian-agents` skill or `/review` command.
 - All changes require human approval — never auto-apply
 
 ## Key Skills
+- `session-management` — Greet on start, handoff on end
 - `guardian-agents` — Parallel review orchestration
 - `feature-completion` — Feature branch workflow
 - `full-codebase-review` — Develop → main review
 - `weekly-annealing` — Self-improvement cycle
+- `boilerplate-sync` — Sync improvements across instances
+- `boilerplate-migrate` — Add boilerplate to existing projects
+- `boilerplate-customize` — Adjust boilerplate for your needs
 
 ## Commands
 - `/review` — Manual guardian sweep
 - `/complete-feature` — Feature completion checklist
 - `/feedback` — Quick feedback capture
+- `/customize` — Adjust boilerplate settings
+- `/migrate` — Add boilerplate to existing project
 
 ## See Also
 - Design doc: @docs/plans/2025-12-03-claude-code-boilerplate-design.md
