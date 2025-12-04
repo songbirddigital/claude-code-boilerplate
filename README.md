@@ -1,5 +1,7 @@
 # Claude Code Boilerplate
 
+By [Songbird Digital](https://github.com/songbirddigital)
+
 A production-ready boilerplate for Claude Code projects featuring guardian agents, self-annealing, and structured workflows.
 
 ## Features
@@ -148,4 +150,12 @@ Tracked for future implementation:
 
 ---
 
-Created with research from [VoltAgent](https://github.com/VoltAgent/awesome-claude-code-subagents), [wshobson/agents](https://github.com/wshobson/agents), [claude-flow](https://github.com/ruvnet/claude-flow), and contractor-system patterns.
+## License
+
+MIT License - see [LICENSE](./LICENSE)
+
+---
+
+Created by [Songbird Digital](https://github.com/songbirddigital)
+
+Built with research from [VoltAgent](https://github.com/VoltAgent/awesome-claude-code-subagents), [wshobson/agents](https://github.com/wshobson/agents), [claude-flow](https://github.com/ruvnet/claude-flow), [obra/superpowers](https://github.com/obra/superpowers), and contractor-system patterns.

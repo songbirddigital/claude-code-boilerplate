@@ -69,3 +69,6 @@ Invoke via `guardian-agents` skill or `/review` command.
 ## See Also
 - Design doc: @docs/plans/2025-12-03-claude-code-boilerplate-design.md
 - Settings: @.claude/settings.json
+
+---
+*Boilerplate by [Songbird Digital](https://github.com/songbirddigital)*

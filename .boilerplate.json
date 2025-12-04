@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "source": {
     "type": "github",
-    "repo": "your-username/claude-code-boilerplate",
-    "branch": "main"
+    "repo": "songbirddigital/claude-code-boilerplate",
+    "branch": "master"
   },
   "last_sync": null,
   "managed_files": [
