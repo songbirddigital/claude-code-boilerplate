@@ -156,6 +156,33 @@ Reply with numbers to change (e.g., "1 quiet, 3 off") or just tell me what we're
 - Store session preferences in `.ai/sessions/current-preferences.json`
 - Preferences persist only for current session
 
+**Preferences Format:**
+
+```json
+// .ai/sessions/current-preferences.json
+{
+  "session_start": "2025-12-03T10:30:00Z",
+  "settings": {
+    "verbosity": "full",
+    "guardians": "all",
+    "apprentice": "on",
+    "annealing": "active",
+    "external_review": "enabled",
+    "session_docs": "full",
+    "sync_check": "skip"
+  },
+  "applied_presets": []
+}
+```
+
+**How Preferences Apply:**
+- Claude reads this file at relevant decision points
+- `verbosity` affects explanation depth
+- `guardians` affects which run on commit
+- `apprentice` affects teaching style
+- `annealing` affects whether observations are logged
+- File is deleted at session end (preferences don't persist)
+
 **Quick responses:**
 - "defaults" or just stating a task → use all defaults
 - "quiet mode" → sets verbosity to quiet

@@ -57,6 +57,8 @@
       "*.test.*": ["test"],
       "*.spec.*": ["test"],
       "__tests__/**": ["test"],
+      ".claude/skills/**/*.md": ["docs", "architecture"],
+      ".claude/agents/*.md": ["docs", "architecture"],
       "*.md": ["docs"],
       "docs/**": ["docs"],
       "*.css": ["accessibility"],
