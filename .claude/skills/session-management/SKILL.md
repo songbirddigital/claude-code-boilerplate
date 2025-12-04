@@ -26,6 +26,8 @@ Read these sources before composing greeting:
 6. .ai/tasks/parallel/           → In-progress work
 7. .ai/annealing/history/        → Recent self-improvements
 8. .ai/feedback/                 → Recent observations
+9. command -v prettier           → Check if prettier installed
+10. package.json                  → Check if project has dependencies
 ```
 
 ### Step 2: Determine Highlights
@@ -38,6 +40,7 @@ Choose what to spotlight based on conditions:
 | New guardian/skill added recently | Introduce it briefly |
 | Task completed last session | Celebrate + what's next |
 | Feedback logged but not addressed | Mention pending improvements |
+| Prettier not installed + package.json exists | Offer to install prettier |
 | Nothing special | Rotate through feature tips |
 
 **Feature tip rotation** (cycle through these):
@@ -74,6 +77,8 @@ Structure (~5-10 lines, engaging, substantive):
 
 ---
 What are we working on today?
+
+*Tip: When you're done, say "end session" so I can save context for next time.*
 ```
 
 ### Step 4: Prompt for Session Settings
@@ -156,6 +161,34 @@ Sounds like [X] isn't working for you. Want me to adjust it?
 
 Track in `.boilerplate.json` → `session_count` and `settings_skipped_count`
 
+### Prettier Setup (when user accepts)
+
+If user says "install prettier" or similar:
+
+```bash
+# Install
+pnpm add -D prettier
+
+# Create config
+cat > .prettierrc << 'EOF'
+{
+  "semi": true,
+  "singleQuote": true,
+  "tabWidth": 2,
+  "trailingComma": "es5"
+}
+EOF
+```
+
+After install, confirm: "Done! The auto-format hook will now run on every file I edit."
+
+Track in `.ai/sessions/tooling-offered.log`:
+```
+YYYY-MM-DD: prettier - accepted/declined
+```
+
+Only offer once per project. If declined, don't ask again unless user asks.
+
 ### Step 5: Deliver and Engage
 
 - Deliver greeting as your first message
@@ -198,6 +231,8 @@ for OWASP top 10, credential exposure, and session handling.
 7. Sync Check: [skip] / check
 
 Change with "1 quiet, 3 off" or just tell me what we're working on.
+
+*Tip: When you're done, say "end session" so I can save context for next time.*
 ```
 
 **Example 2: Fresh project**
@@ -218,6 +253,8 @@ without you saying yes.
 
 ---
 What should we tackle first?
+
+*Tip: When you're done, say "end session" so I can save context for next time.*
 ```
 
 **Example 3: After annealing**
@@ -242,6 +279,39 @@ flagged during code review.
 
 ---
 Want to start with those integration tests?
+
+*Tip: When you're done, say "end session" so I can save context for next time.*
+```
+
+**Example 4: Prettier not installed**
+```
+Good morning!
+
+**Project Status**
+- Branch: feature/api | 3 uncommitted files
+- Recent: "Add user endpoints", "Set up database models"
+
+**Last Session**
+Started the API endpoints for user management.
+
+**What's Next**
+- Finish CRUD operations for users
+- Add validation middleware
+
+**Quick Setup Offer**
+I noticed Prettier isn't installed. The boilerplate has an auto-format
+hook that runs Prettier on every file I edit — keeps code clean without
+thinking about it.
+
+Want me to set it up? Just say "install prettier" and I'll run:
+`pnpm add -D prettier` + create a basic .prettierrc
+
+(Or ignore this and we'll continue without it — totally fine.)
+
+---
+What are we working on today?
+
+*Tip: When you're done, say "end session" so I can save context for next time.*
 ```
 
 ---

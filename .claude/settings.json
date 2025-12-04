@@ -8,11 +8,22 @@
     ],
     "PreToolUse": [
       {
-        "matcher": "Bash:git commit",
+        "matcher": "Edit|Write",
         "hooks": [
           {
             "type": "command",
-            "command": "echo 'Guardian pre-commit check triggered' && exit 0"
+            "command": "echo \"$CLAUDE_FILE_PATH\" | grep -qE '\\.(env|pem|key|p12)$|\\.env\\.|credentials|secrets|id_rsa|id_ed25519|\\.npmrc|\\.pypirc' && echo 'Blocked: sensitive file' >&2 && exit 2 || exit 0"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit:*.ts|Edit:*.tsx|Edit:*.js|Edit:*.jsx|Edit:*.json|Edit:*.css|Edit:*.md",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "command -v prettier >/dev/null && prettier --write \"$CLAUDE_FILE_PATH\" 2>/dev/null || true"
           }
         ]
       }
