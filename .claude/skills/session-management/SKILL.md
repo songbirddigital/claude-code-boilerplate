@@ -18,9 +18,9 @@ This is your first interaction with the user each session. Make it count.
 Read these sources before composing greeting:
 
 ```
-1. git log --oneline -5          → Recent commits
-2. git branch --show-current     → Current branch
-3. git status                    → Uncommitted work
+1. git log --oneline -5              → Recent commits
+2. git rev-parse --abbrev-ref HEAD   → Current branch (compatible with all git versions)
+3. git status                        → Uncommitted work
 4. .ai/sessions/session.log      → Last session notes
 5. .ai/tasks/backlog/            → Pending work
 6. .ai/tasks/parallel/           → In-progress work

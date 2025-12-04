@@ -36,10 +36,51 @@ Show sync state:
 ```bash
 # What the skill does:
 1. Read .boilerplate.json for source info
-2. Compare local managed_files against last_sync
-3. Fetch upstream (without merging) to compare
-4. List upstream-candidates not yet pushed
+2. Check if this IS the source repo (see below)
+3. Compare local managed_files against last_sync
+4. Fetch upstream (without merging) to compare
+5. List upstream-candidates not yet pushed
 ```
+
+#### Source Repo Detection
+
+Before any sync operation, check if this IS the source repo:
+
+```bash
+# Get source from .boilerplate.json
+source_repo=$(jq -r '.source.repo' .boilerplate.json)
+
+# Get origin URL
+origin_url=$(git remote get-url origin 2>/dev/null)
+
+# Compare (normalize URLs)
+if [[ "$origin_url" == *"$source_repo"* ]]; then
+  # This IS the source repo
+fi
+```
+
+**If this IS the source repo, display:**
+
+```
+⚠️  This IS the boilerplate source repository
+
+Sync is for projects that USE the boilerplate, not the source itself.
+
+In this repo:
+- Edit files directly (they become the canonical version)
+- Push to origin (other projects sync FROM here)
+- Review PRs from projects using sync push
+
+Commands that work here:
+- sync status --instances  (see who uses this boilerplate)
+- Direct git operations
+
+Commands that don't apply:
+- sync pull  (you ARE upstream)
+- sync push  (your changes ARE upstream)
+```
+
+**Do NOT proceed with sync operations if this is the source repo.**
 
 ### `sync pull`
 
