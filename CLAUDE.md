@@ -1,79 +1,50 @@
 **FIRST MESSAGE: Invoke `session-management` skill before responding.**
+**SESSION END: When user says "wrap up", "done", "end session" → invoke session-management end protocol.**
 
 # [Project Name] Boilerplate
 
-<!-- META: Keep this file under 80 lines. Add details to linked files, not here. -->
-<!-- If this file grows past 80 lines, refactor content to @ references. -->
-
-## Session End
-When user indicates session is ending ("wrap up", "done", "end session"), invoke session-management skill's end protocol.
+<!-- META: Keep under 80 lines. Details go in linked files. -->
 
 ## Quick Reference
 - Stack: [Define your tech stack here]
-- Commands: `pnpm dev`, `pnpm test`, `pnpm build`
-- Branch: Check with `git branch --show-current`
+- Commands: `pnpm dev` · `pnpm test` · `pnpm build` · Branch: `git branch --show-current`
 
 ## Critical Rules
 1. **Research first** — Web search before recommending when currency matters
 2. **No secrets in code** — Environment variables only
 3. **Explicit types** — No `any` without justification
-4. **Tests required** — Write tests before committing
-5. **Guardian gates** — Zero issues required for merge (override with approval)
+4. **Tests before commit** — All tests written and passing
+5. **Guardian review** — Invoke guardians + external review before feature completion; fix all issues
+6. **Merge gates** — Feature→develop: full review flow passes. Develop→main: full-codebase-review, multiple rounds at user discretion
+7. **Human approval** — Never auto-apply changes; all annealing proposals require explicit approval
 
-## Mode
-Apprentice mode active:
-- Explain "why" not just "what"
-- Use analogies for new concepts
-- Define jargon on first use
-- Share relevant industry context
-
-For extra-detailed teaching: invoke `apprentice-mode` skill.
+## Mode: Apprentice
+Explain "why" not just "what" · Use analogies · Define jargon · Share industry context
+For extra detail: invoke `apprentice-mode` skill.
 
 ## Context (load when relevant)
-- Current state: @.ai/context/current-world-state.md
-- Project context: @.ai/SHARED-CONTEXT.md
-- Architecture: @docs/architecture.md
+@.ai/context/current-world-state.md · @.ai/SHARED-CONTEXT.md · @docs/architecture.md
 
-## Guardians
-9 specialized agents configured in @.claude/settings.json:
-- security, typescript, architecture, test, performance
-- docs, accessibility, api, database
-
-Triggers: pre-commit, PR creation, manual `/review`
-
-Invoke via `guardian-agents` skill or `/review` command.
-
-## External Review
-- Primary: Codex (task files in .ai/tasks/review/)
-- Secondary: Gemini (optional)
+## Review Flow
+1. **Guardians** (sync) — 9 parallel agents: security · typescript · architecture · test · performance · docs · accessibility · api · database
+2. **External** (async) — Codex reviews via .ai/tasks/review/ while you continue working · Gemini optional
+3. **Synthesis** — Aggregate findings, triage fixes, verify zero issues before merge
 
 ## Self-Annealing
-- Feedback: Log observations to .ai/feedback/
-- Weekly review: Aggregates feedback, proposes improvements
-- All changes require human approval — never auto-apply
+Log observations → .ai/feedback/ · Weekly review proposes improvements · Human approves all changes
+Trust escalation: after consistent approval history, low-risk changes may auto-apply (see weekly-annealing skill)
 
 ## Key Skills
-- `session-management` — Greet on start, handoff on end
-- `guardian-agents` — Parallel review orchestration
-- `feature-completion` — Feature branch workflow
-- `full-codebase-review` — Develop → main review
-- `weekly-annealing` — Self-improvement cycle
-- `boilerplate-sync` — Sync improvements across instances
-- `boilerplate-migrate` — Add boilerplate to existing projects
-- `boilerplate-customize` — Adjust boilerplate for your needs
-- `skill-audit` — Check skill health, updates, TDD status
+`session-management` (greet/handoff) · `guardian-agents` (parallel review) · `feature-completion` (branch workflow)
+`full-codebase-review` (develop→main) · `weekly-annealing` (self-improvement) · `skill-audit` (ecosystem health)
+`boilerplate-sync` · `boilerplate-migrate` · `boilerplate-customize` · `apprentice-mode` · `guardian-builder`
 
 ## Commands
-- `/review` — Manual guardian sweep
-- `/complete-feature` — Feature completion checklist
-- `/feedback` — Quick feedback capture
-- `/customize` — Adjust boilerplate settings
-- `/migrate` — Add boilerplate to existing project
-- `/audit skills` — Check skill ecosystem health
+`/review` (guardian sweep) · `/complete-feature` (completion checklist) · `/feedback` (quick capture)
+`/customize` (adjust settings) · `/migrate` (add to existing project) · `/audit skills` (ecosystem health)
 
 ## See Also
-- Design doc: @docs/plans/2025-12-03-claude-code-boilerplate-design.md
-- Settings: @.claude/settings.json
+@docs/plans/2025-12-03-claude-code-boilerplate-design.md · @.claude/settings.json
 
 ---
 *Boilerplate by [Songbird Digital](https://github.com/songbirddigital)*
