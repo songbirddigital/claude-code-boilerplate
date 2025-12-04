@@ -43,22 +43,117 @@ Show sync state:
 
 ### `sync pull`
 
-Fetch and selectively merge upstream changes:
+Fetch and selectively merge upstream changes.
+
+#### First-Time Setup Detection
+
+If no `last_sync` in `.boilerplate.json`, trigger first-time setup:
+
+```
+First-time sync setup detected
+
+This appears to be the first time running sync for this project.
+
+Setting up boilerplate remote...
+✓ Added remote: boilerplate → [source]
+
+Fetching from upstream...
+✓ Fetched [N] commits from boilerplate/main
+
+Setup Options:
+  1. Treat current state as customized (SAFE)
+     - Keeps all your current files unchanged
+     - Marks them as "customized" for manual review
+     - Best for existing projects with local changes
+
+  2. Sync from upstream (FRESH START)
+     - Replaces local managed files with upstream versions
+     - Creates backup first
+     - Best for new projects
+
+  3. Show differences first (REVIEW)
+     - Shows what would change with each option
+     - Then choose option 1 or 2
+```
+
+#### Normal Sync Flow
 
 ```bash
 # What the skill does:
-1. git fetch upstream (or clone if first time)
+1. git fetch boilerplate (or setup if first time)
 2. Diff managed_files between local and upstream
 3. For each changed file:
    - If in customized[] → show diff, ask to merge or skip
    - If not customized → auto-merge (with backup)
-4. Update .boilerplate.json last_sync
+4. Update .boilerplate.json last_sync and last_sync_commit
 ```
 
-**Conflict resolution:**
-- Show side-by-side diff
-- Options: take upstream / keep local / merge manually / mark as customized
-- If marked customized, add to customized[] array
+#### Backup Protocol
+
+**Before ANY file changes:**
+
+```bash
+# Create timestamped backup
+mkdir -p .claude/agents/.backup-$(date +%Y-%m-%dT%H-%M-%S)/
+cp [files-to-be-changed] .claude/agents/.backup-.../
+```
+
+Always show rollback instructions after changes:
+```
+Your backup (in case you need to restore):
+  .claude/agents/.backup-2025-12-03T15-30-00/
+
+To rollback: git reset --hard HEAD~1
+```
+
+#### Conflict Resolution
+
+When same file modified locally and upstream:
+
+```
+⚠️  CONFLICT DETECTED
+
+File: .claude/agents/security-guardian.md
+Both local and upstream modified this file.
+
+┌─ Upstream version ──────────────────────────────┐
+│ [show relevant diff section]                     │
+└──────────────────────────────────────────────────┘
+
+┌─ Local version ─────────────────────────────────┐
+│ [show relevant diff section]                     │
+└──────────────────────────────────────────────────┘
+
+Resolution options:
+  1. Take upstream - Replace with upstream version
+  2. Keep local - Preserve your changes
+  3. Merge manually - Combine both changes
+  4. Mark as customized - Keep local, skip future auto-merges
+
+Your choice [1/2/3/4]:
+```
+
+**NEVER auto-resolve conflicts.** Always require user decision.
+
+Log resolution to `.ai/feedback/process/boilerplate-sync.md` and track in `.boilerplate.json`:
+```json
+{
+  "conflict_resolutions": [
+    {
+      "file": ".claude/agents/security-guardian.md",
+      "date": "2025-12-03T15:30:00Z",
+      "method": "manual_merge",
+      "upstream_commit": "def456",
+      "local_commit": "xyz999"
+    }
+  ]
+}
+```
+
+If user chooses "Mark as customized", save upstream diff for later review:
+```
+.ai/upstream-diffs/2025-12-03-security-guardian.diff
+```
 
 ### `sync push`
 

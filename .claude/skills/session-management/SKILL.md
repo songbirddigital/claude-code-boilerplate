@@ -51,7 +51,23 @@ Choose what to spotlight based on conditions:
 - Research-first: "I web search before recommending when currency matters"
 - Session continuity: "Session logs help me pick up where we left off"
 
-Track shown highlights in `.ai/sessions/highlights-shown.log` to avoid repetition.
+Track shown highlights in `.ai/sessions/highlights-shown.log` to avoid repetition:
+```
+# Highlights Shown Log
+2025-12-01: guardian-agents - shown
+2025-12-02: self-annealing - shown
+2025-12-03: external-review - shown
+```
+
+### Session Start Anti-Patterns
+
+**DO NOT:**
+- Create or modify session.log on start (that's for session end)
+- Execute work before user responds
+- Install prettier without user consent
+- Create task files speculatively
+- Show multiple feature tips (just one per session)
+- Wait for user to ask "where should I start?"
 
 ### Step 3: Compose Greeting
 
