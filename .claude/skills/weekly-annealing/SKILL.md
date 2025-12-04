@@ -113,7 +113,39 @@ For each approved change:
 4. Verify no regression
 ```
 
-### Step 7: Update Current World State
+### Step 7: Skill Ecosystem Audit
+
+Run skill-audit as part of annealing:
+
+```
+[ ] Check recommended skills for updates
+[ ] Scan curated lists for new discoveries
+[ ] Review TDD queue for boilerplate skills
+[ ] Present findings for approval
+```
+
+Read `.ai/skills/recommended-skills.json` and:
+
+1. **Updates Available**
+   - Web search for updates to recommended skills
+   - Present changelog/diff if found
+   - Options: [Apply] [Skip] [Review]
+
+2. **New Discoveries**
+   - Check curated lists for skills not in recommended or rejected
+   - Evaluate relevance to project
+   - Options: [Add to recommended] [Reject] [Evaluate later]
+
+3. **TDD Queue**
+   - List boilerplate skills needing fixtures
+   - Prioritize by impact and usage
+   - Options: [Start TDD build] [Defer]
+
+4. **Update Tracking**
+   - Set last_audit timestamp
+   - Log findings to .ai/feedback/skills/
+
+### Step 8: Update Current World State
 
 Review and update `.ai/context/current-world-state.md`:
 

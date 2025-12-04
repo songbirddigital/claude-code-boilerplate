@@ -56,6 +56,7 @@ Invoke via `guardian-agents` skill or `/review` command.
 - `boilerplate-sync` — Sync improvements across instances
 - `boilerplate-migrate` — Add boilerplate to existing projects
 - `boilerplate-customize` — Adjust boilerplate for your needs
+- `skill-audit` — Check skill health, updates, TDD status
 
 ## Commands
 - `/review` — Manual guardian sweep
@@ -63,6 +64,7 @@ Invoke via `guardian-agents` skill or `/review` command.
 - `/feedback` — Quick feedback capture
 - `/customize` — Adjust boilerplate settings
 - `/migrate` — Add boilerplate to existing project
+- `/audit skills` — Check skill ecosystem health
 
 ## See Also
 - Design doc: @docs/plans/2025-12-03-claude-code-boilerplate-design.md
