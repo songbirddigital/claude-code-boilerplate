@@ -1,11 +1,5 @@
 {
   "hooks": {
-    "SessionStart": [
-      {
-        "type": "command",
-        "command": "echo \"Session started: $(date '+%Y-%m-%d %H:%M')\" >> .ai/sessions/session.log"
-      }
-    ],
     "PreToolUse": [
       {
         "matcher": "Edit|Write",
@@ -26,12 +20,6 @@
             "command": "command -v prettier >/dev/null && prettier --write \"$CLAUDE_FILE_PATH\" 2>/dev/null || true"
           }
         ]
-      }
-    ],
-    "Stop": [
-      {
-        "type": "command",
-        "command": "echo \"Session ended: $(date '+%Y-%m-%d %H:%M')\" >> .ai/sessions/session.log"
       }
     ]
   },

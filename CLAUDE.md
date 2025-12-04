@@ -1,13 +1,12 @@
+**FIRST MESSAGE: Invoke `session-management` skill before responding.**
+
 # [Project Name] Boilerplate
 
 <!-- META: Keep this file under 80 lines. Add details to linked files, not here. -->
 <!-- If this file grows past 80 lines, refactor content to @ references. -->
 
-## Session Start
-On first message each session, invoke `session-management` skill for contextual greeting.
-
 ## Session End
-When user indicates session is ending ("wrap up", "done", "end session"), invoke session-management skill's end protocol before stopping.
+When user indicates session is ending ("wrap up", "done", "end session"), invoke session-management skill's end protocol.
 
 ## Quick Reference
 - Stack: [Define your tech stack here]
