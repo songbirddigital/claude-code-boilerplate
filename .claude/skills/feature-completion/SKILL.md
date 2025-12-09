@@ -155,6 +155,56 @@ If blocked and need override:
 [Anything notable for future reference or annealing]
 ```
 
+## Lifecycle Phase Verification
+
+Before completing a feature, verify lifecycle phases in features.json:
+
+### Phase Checklist
+
+```bash
+# Read feature status
+cat .claude/memory/features.json | grep -A 50 "[FEATURE-ID]"
+```
+
+Verify:
+- [ ] `lifecycle.inception.status` = "complete"
+- [ ] `lifecycle.planning.status` = "complete"
+- [ ] `lifecycle.implementation.status` = "complete" (all tasks done)
+- [ ] `lifecycle.testing.status` = "complete"
+- [ ] `lifecycle.review.status` = "complete"
+
+### Update Feature Status
+
+On completion:
+```javascript
+// In features.json, update:
+{
+  "status": "complete",
+  "phase": "merged",
+  "lifecycle": {
+    "merged": {
+      "status": "complete",
+      "merge_date": "[date]",
+      "pr_url": "[if applicable]"
+    }
+  }
+}
+```
+
+### Update Progress Log
+
+```
+================================================================================
+[TIMESTAMP] FEATURE COMPLETE
+Feature: [ID] - [Title]
+Total tasks: [X]
+Total sessions: [Y]
+Decisions recorded: [Z]
+================================================================================
+```
+
+---
+
 ## Self-Annealing
 
 After each feature completion:

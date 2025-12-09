@@ -435,6 +435,53 @@ git checkout HEAD -- CLAUDE.md  # restore original
 
 ---
 
+## Domain Memory Migration
+
+When migrating a project, always add the domain memory scaffold:
+
+### Step 1: Check for existing memory
+```bash
+ls .claude/memory/ 2>/dev/null || echo "No memory directory"
+```
+
+### Step 2: Create memory scaffold
+If no memory exists:
+```bash
+mkdir -p .claude/memory
+```
+
+Then create:
+- `.claude/memory/features.json` — from template
+- `.claude/memory/progress.log` — initialized
+- `.claude/memory/decisions.md` — from template
+- `.claude/memory/issues.md` — from template
+
+### Step 3: Ask clarifying questions
+
+```
+I'm setting up domain memory for your project. A few questions:
+
+1. **Active work:** What are you currently working on?
+   (I'll create the first feature entry)
+
+2. **Key decisions already made:** Any architectural choices I should document?
+
+3. **Known issues:** Any bugs or tech debt to track?
+```
+
+### Step 4: Populate initial state
+
+Based on user answers:
+- Add first feature to features.json
+- Record any decisions to decisions.md
+- Add any issues to issues.md
+
+### Step 5: Update CLAUDE.md
+
+Merge session protocol into existing CLAUDE.md while preserving project-specific content.
+
+---
+
 ## Self-Annealing
 
 Track migration quality:

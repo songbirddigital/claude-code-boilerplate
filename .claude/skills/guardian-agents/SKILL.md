@@ -91,6 +91,17 @@ For each (guardian, files) in guardian_map:
   )
 ```
 
+**Guardian Locations (new domains structure):**
+- `.claude/agents/domains/security/guardian.md`
+- `.claude/agents/domains/database/guardian.md`
+- `.claude/agents/domains/architecture/guardian.md`
+- `.claude/agents/domains/api/guardian.md`
+- `.claude/agents/domains/typescript/guardian.md`
+- `.claude/agents/domains/test/guardian.md`
+- `.claude/agents/domains/performance/guardian.md`
+- `.claude/agents/domains/accessibility/guardian.md`
+- `.claude/agents/domains/docs/guardian.md`
+
 **Important:** Each guardian receives ONLY files relevant to its domain.
 - `accessibility-guardian` gets `.tsx` files only
 - `database-guardian` gets `.sql` and migration files only

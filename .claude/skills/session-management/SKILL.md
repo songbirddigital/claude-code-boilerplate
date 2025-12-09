@@ -3,7 +3,14 @@ name: session-management
 description: Start and end session protocols to maintain context and ensure proper handoff
 ---
 
-# Session Management
+> **DEPRECATED:** Session protocol has moved to CLAUDE.md for reliability.
+> This skill is kept for reference but should not be invoked.
+> See CLAUDE.md "Session Protocol" section for current behavior.
+> Domain memory files (.claude/memory/) now handle session continuity.
+
+---
+
+# Session Management (DEPRECATED)
 
 Protocols for starting and ending coding sessions to maintain context continuity.
 
