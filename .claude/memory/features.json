@@ -1,0 +1,27 @@
+{
+  "project": "[PROJECT-NAME]",
+  "version": "0.1.0",
+  "last_updated": null,
+  "metadata": {
+    "created": null,
+    "initialized_by": "user",
+    "tech_stack": [],
+    "repository": null
+  },
+  "features": [],
+  "phases_legend": {
+    "inception": "Feature has been identified but not yet planned",
+    "planning": "Requirements and approach being defined",
+    "implementation": "Active development",
+    "testing": "Code complete, being tested",
+    "review": "Tests passing, awaiting code review",
+    "merged": "Approved and merged to main branch"
+  },
+  "status_legend": {
+    "pending": "Not started",
+    "in_progress": "Currently being worked on",
+    "blocked": "Cannot proceed without external input",
+    "complete": "Phase finished successfully",
+    "skipped": "Phase intentionally skipped"
+  }
+}
