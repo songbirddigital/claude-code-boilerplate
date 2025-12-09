@@ -1,0 +1,58 @@
+# Progress Log
+# Append-only entries documenting each work session
+# Format: SESSION START/END markers with structured content
+
+================================================================================
+[TEMPLATE - DELETE AFTER FIRST REAL ENTRY]
+
+[YYYY-MM-DD HH:MM] SESSION START
+Feature: [FEATURE-ID] — [Feature Title]
+Task: [TASK-ID] — [Task Description]
+Context loaded: features.json, progress.log tail, decisions.md
+================================================================================
+
+[HH:MM] ACTION: [What was done]
+  - [Details]
+
+[HH:MM] TEST: [Test results]
+  - [X/Y passing]
+
+[HH:MM] DECISION: [Decision made] (see DEC-XXX)
+
+[HH:MM] BLOCKER: [Description]
+
+================================================================================
+[YYYY-MM-DD HH:MM] SESSION END
+Feature: [ID] — [Title]
+Task: [TASK-ID] — [Description]
+
+COMPLETED:
+- [What was accomplished]
+
+IN PROGRESS:
+- [What was started but not finished]
+
+TESTS: [X/Y passing]
+
+DECISIONS: [DEC-XXX — brief description]
+
+FILES CHANGED:
++ [new files]
+M [modified files]
+
+BLOCKERS: [Any blockers]
+
+NEXT SESSION:
+- [Recommended next actions]
+- [Open questions]
+
+CONTEXT FOR NEXT SESSION:
+[Free-form notes for handoff]
+
+Commit: [hash] "[message]"
+================================================================================
+
+# ============================================================================
+# ACTUAL PROGRESS BEGINS BELOW
+# ============================================================================
+
