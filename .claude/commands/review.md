@@ -1,57 +1,39 @@
 ---
-description: Trigger manual guardian review on current changes or specified files
+description: Trigger guardian review with REVIEWER agent orchestration
 ---
 
-# Manual Guardian Review
+Read @.claude/agents/REVIEWER.md and perform a code review.
 
-Run a guardian sweep on demand.
+Usage: /review [FEATURE-ID or file paths]
 
-## Usage
+The REVIEWER will:
+1. Load feature context from features.json
+2. Run automated checks (tests, lint, types)
+3. Check specification compliance
+4. Spawn parallel guardian reviews based on files changed
+5. Create Codex review task (async, ~15 min)
+6. Synthesize all findings
+7. Present verdict: APPROVED / CHANGES REQUESTED
 
-```
-/review                    # Review uncommitted changes
-/review src/api/           # Review specific directory
-/review --full             # Full codebase review
-```
+Guardian file detection:
+- *.sql, migrations/**, *.prisma → database guardian
+- api/**, routes/** → api + security guardians
+- auth/** → security guardian
+- *.ts, *.tsx → typescript guardian
+- *.tsx, *.jsx, *.css → accessibility guardian
+- *.test.*, *.spec.* → test guardian
+- *.md, docs/** → docs guardian
 
-## Process
+All findings are aggregated and prioritized by severity.
 
-1. Determine scope (changes, path, or full)
-2. Detect applicable guardians based on files
-3. Invoke `guardian-agents` skill
-4. Report findings
-
-## Quick Review (Default)
+## Quick Review (no FEATURE-ID)
 
 Reviews uncommitted changes:
-- `git diff --name-only` for staged
-- `git diff --name-only HEAD` for all changes
+- `git diff --name-only` for scope
+- Spawns guardians based on detected files
 
-## Path Review
-
-Reviews all files in specified path:
-- Recursively processes directory
-- Applies file detection rules
-
-## Full Review
+## Full Review (--full flag)
 
 Invokes `full-codebase-review` skill:
 - All guardians on all files
 - Extended checks (coverage, deps, architecture)
-- Generates health report
-
-## Output
-
-Findings reported in standard format:
-```
-## Review Results
-
-### CRITICAL (X)
-...
-
-### HIGH (Y)
-...
-
-### Action Required
-[What needs to be fixed before proceeding]
-```
