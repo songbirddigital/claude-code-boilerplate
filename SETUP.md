@@ -19,7 +19,7 @@ git init
 claude
 
 # 5. Let Claude learn your project
-/init
+/setup
 ```
 
 ## Step-by-Step Setup
@@ -50,20 +50,21 @@ Open `CLAUDE.md` and update:
 
 **Keep it lean** — The boilerplate CLAUDE.md is ~60 lines. Add detail to linked files, not here.
 
-### Step 4: Run `/init`
+### Step 4: Run `/setup`
 
 Start Claude Code and run:
 
 ```
-/init
+/setup
 ```
 
 **What this does:**
-- Claude scans your project structure
-- Detects patterns, dependencies, conventions
-- Suggests additions to CLAUDE.md
+- Invokes the INITIALIZER agent to create domain memory
+- Asks about your project purpose, features, and tech stack
+- Creates features.json with initial feature breakdown
+- Initializes progress.log, decisions.md, issues.md
 
-**Important:** `/init` is a starting point, not final. Review suggestions and accept what fits.
+**Important:** This is an interactive process. Answer the questions thoughtfully - this foundation shapes all future work.
 
 ### Step 5: Update Shared Context
 
@@ -130,12 +131,13 @@ summarize the architecture. Don't write any code yet."
 
 | Command | Description |
 |---------|-------------|
-| `/init` | Scan project and suggest CLAUDE.md updates |
-| `/clear` | Clear context (start fresh) |
-| `/resume` | Resume a previous conversation |
-| `/review` | Trigger guardian review (custom) |
-| `/complete-feature` | Run feature completion checklist (custom) |
-| `/feedback` | Log feedback for annealing (custom) |
+| `/setup` | Initialize new project with domain memory |
+| `/migrate` | Add boilerplate to existing project |
+| `/status` | Show current project status |
+| `/plan` | Invoke PLANNER for feature planning |
+| `/review` | Trigger guardian review + external reviewers |
+| `/complete-feature` | Run feature completion checklist |
+| `/feedback` | Log feedback for annealing |
 
 ### Skills
 
@@ -146,8 +148,9 @@ summarize the architecture. Don't write any code yet."
 | `full-codebase-review` | Review before release |
 | `weekly-annealing` | Weekly self-improvement |
 | `apprentice-mode` | Detailed teaching mode |
-| `session-management` | Session start/end protocols |
 | `guardian-builder` | Create new guardians with TDD |
+| `boilerplate-sync` | Sync improvements between instances |
+| `boilerplate-migrate` | Add boilerplate to existing projects |
 
 ### Guardian Agents
 
@@ -258,8 +261,9 @@ The boilerplate improves itself over time:
 [ ] Copy boilerplate to project directory
 [ ] git init
 [ ] Customize CLAUDE.md (project name, stack, commands)
-[ ] Run /init to let Claude learn the project
-[ ] Review and accept /init suggestions
+[ ] Run /setup to initialize domain memory
+[ ] Answer INITIALIZER questions about your project
+[ ] Review generated features.json and decisions.md
 [ ] Update .ai/SHARED-CONTEXT.md
 [ ] Update .ai/context/current-world-state.md
 [ ] Configure guardians in .claude/settings.json

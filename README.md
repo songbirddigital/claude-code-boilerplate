@@ -23,7 +23,7 @@ cd my-project/
 # Initialize
 git init
 claude
-/init
+/setup
 ```
 
 See [SETUP.md](./SETUP.md) for detailed instructions.
@@ -32,19 +32,37 @@ See [SETUP.md](./SETUP.md) for detailed instructions.
 
 ```
 .claude/                    # Configuration
-├── agents/                 # 9 Guardian subagents
-├── skills/                 # 7 Workflow skills
+├── memory/                 # Domain memory (persistent state)
+│   ├── features.json       # Machine-readable backlog
+│   ├── progress.log        # Session history + handoff
+│   ├── decisions.md        # Architectural Decision Records
+│   └── issues.md           # Problem tracking
+├── agents/                 # Agent protocols
+│   ├── INITIALIZER.md      # Bootstrap domain memory
+│   ├── PLANNER.md          # Feature planning
+│   ├── IMPLEMENTER.md      # Worker protocol
+│   ├── REVIEWER.md         # Pre-merge review orchestration
+│   └── domains/            # Domain-specific agents
+│       ├── security/       # Guardian + Specialist
+│       ├── database/       # Guardian + Specialist
+│       └── ...             # 9 domains total
+├── skills/                 # Workflow orchestration
 ├── commands/               # Custom slash commands
+├── templates/              # Feature spec templates
 └── settings.json           # Hooks and guardian config
 
 .ai/                        # Operations
-├── tasks/                  # Work assignments
+├── feedback/               # Self-annealing observations
+│   ├── guardians/
+│   ├── skills/
+│   ├── memory/             # Domain memory feedback
+│   └── ...
+├── annealing/              # Weekly review history
 ├── sessions/               # Session logs
-├── feedback/               # Self-annealing data
-├── annealing/              # Improvement history
-└── context/                # World state
+├── context/                # World state
+└── tasks/                  # Work assignments
 
-CLAUDE.md                   # Lean entry point (~60 lines)
+CLAUDE.md                   # Entry point (~170 lines)
 AGENTS.md                   # Codex reviewer touchpoint
 GEMINI.md                   # Gemini reviewer touchpoint
 SETUP.md                    # Setup instructions
@@ -73,14 +91,19 @@ SETUP.md                    # Setup instructions
 | full-codebase-review | Develop → main comprehensive review |
 | weekly-annealing | Self-improvement cycle |
 | apprentice-mode | Detailed teaching mode |
-| session-management | Session start/end protocols |
 | guardian-builder | Create new guardians with TDD |
+| boilerplate-sync | Sync improvements between instances |
+| boilerplate-migrate | Add boilerplate to existing projects |
 
 ## Commands
 
 | Command | Description |
 |---------|-------------|
-| /review | Manual guardian sweep |
+| /setup | Initialize new project with domain memory |
+| /migrate | Add boilerplate to existing project |
+| /status | Show current project status |
+| /plan | Invoke PLANNER for feature planning |
+| /review | Trigger guardian review + external reviewers |
 | /complete-feature | Feature completion checklist |
 | /feedback | Quick feedback capture |
 

@@ -163,9 +163,12 @@ Choice [1/2/3/4]:
 See @.ai/SHARED-CONTEXT.md for boilerplate documentation.
 
 ## Key Skills
-- `session-management` — Greet on start, handoff on end
 - `guardian-agents` — Parallel review orchestration
 - `boilerplate-sync` — Sync improvements across instances
+- `boilerplate-migrate` — Add boilerplate to existing projects
+- `weekly-annealing` — Self-improvement cycle
+
+Note: Session protocol is now inline in CLAUDE.md, not a separate skill.
 
 ## Guardians
 9 specialized agents. Invoke via `guardian-agents` skill or `/review`.
@@ -223,12 +226,16 @@ Copy from source, skip existing:
 ```
 Copying boilerplate components...
 
-.claude/agents/security-guardian.md      ✓ created
-.claude/agents/typescript-guardian.md    ✓ created
-.claude/agents/...                        ✓ created
+.claude/agents/INITIALIZER.md            ✓ created
+.claude/agents/PLANNER.md                 ✓ created
+.claude/agents/IMPLEMENTER.md             ✓ created
+.claude/agents/REVIEWER.md                ✓ created
+.claude/agents/domains/security/          ✓ created
+.claude/agents/domains/typescript/        ✓ created
+.claude/agents/domains/...                ✓ created
 
-.claude/skills/session-management/        ✓ created
 .claude/skills/guardian-agents/           ✓ created
+.claude/skills/weekly-annealing/          ✓ created
 .claude/skills/...                        ✓ created
 
 .claude/commands/review.md                ✓ created
