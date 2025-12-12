@@ -8,6 +8,82 @@
 
 ---
 
+## 🔍 STAYING CURRENT (Critical!)
+
+**You MUST research before making ANY technical recommendations.**
+
+### When to Search
+**ALWAYS search before suggesting:**
+- Libraries, frameworks, or tools
+- Best practices or design patterns
+- Technology choices or architectural decisions
+- Any recommendation that could be outdated
+
+### How to Search
+
+1. **Check Current Date/Time First**
+   - Read `@.ai/context/current-world-state.md` for date context
+   - Your knowledge cutoff is January 2025 — assume you're outdated
+
+2. **Search Pattern: "best [month year] [topic]"**
+   ```
+   Examples:
+   - "best December 2025 React state management"
+   - "best December 2025 AI video generators"
+   - "best December 2025 TypeScript testing frameworks"
+   ```
+
+3. **For Patterns: Search GitHub First**
+   ```
+   - "GitHub [pattern name] 2025"
+   - "GitHub react hooks patterns stars:>1000"
+   - Sort by: Recently updated
+   ```
+
+4. **For Breaking Changes**
+   ```
+   - "[library] breaking changes 2025"
+   - "[library] migration guide v[X] to v[Y]"
+   - Check official changelog/release notes
+   ```
+
+### Search Examples by Category
+
+| Category | Search Query Template |
+|----------|---------------------|
+| **State Management** | "best [month year] [framework] state management" |
+| **Testing** | "best [month year] [language] testing framework" |
+| **AI Tools** | "best [month year] AI [use case]" |
+| **Database** | "best [month year] database for [use case]" |
+| **Deployment** | "best [month year] hosting platform for [stack]" |
+| **Security** | "[topic] security best practices 2025" |
+
+### Red Flags (Stop and Search!)
+
+If you're about to recommend:
+- ❌ "Redux is the standard for React state" → SEARCH FIRST
+- ❌ "Use Create React App" → SEARCH FIRST
+- ❌ "Jest is the best testing framework" → SEARCH FIRST
+- ❌ Any tool you last saw in training data → SEARCH FIRST
+
+### After Searching
+
+Present findings with:
+- ✅ Source links (with dates when available)
+- ✅ "As of [month year], the current approach is..."
+- ✅ Trade-offs between current options
+- ✅ Migration path if recommending change
+
+**Example Response:**
+> "I searched for 'best December 2025 React state management' and found:
+> - Zustand and Jotai are now preferred over Redux for most use cases
+> - React Server Components (stable in Next.js 15) reduce client state needs
+> - Sources: [link1], [link2] (Dec 2025)
+>
+> For your use case, I recommend [X] because [reasons]."
+
+---
+
 ## Session Protocol
 
 **On start:**
@@ -49,7 +125,7 @@
 ---
 
 ## Critical Rules
-1. **Research first** — Web search before recommending when currency matters
+1. **Research ALWAYS** — Web search before ANY technical recommendation (see "STAYING CURRENT" section)
 2. **No secrets in code** — Environment variables only
 3. **Explicit types** — No `any` without justification
 4. **Tests before commit** — All tests written and passing
